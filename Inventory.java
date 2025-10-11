@@ -1,6 +1,7 @@
 package collections;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,11 +10,10 @@ public class Inventory <T extends Item>{
 	
 	Inventory(){
 		store = new HashMap<>();
-		
 	}
 	
 	public void add(T item) {
-		  // 1️⃣ Check quantity
+		  // 1️ Check quantity
 		try {
         if (item.getQuantity() < 0) {
             throw new Exception(
@@ -21,19 +21,22 @@ public class Inventory <T extends Item>{
             );
         }
 
-        // 2️⃣ Check duplicate ID
+        // 2️ Check duplicate ID
         if (store.containsKey(item.getId())) {
             throw new Exception(
                 "Item with ID " + item.getId() + " already exists"
             );
         }
 
-        // 3️⃣ Add item
+        // 3️ Add item
         store.put(item.getId(), item);
         System.out.println("Item added successfully: " + item.getName());
-		
+        
+		} catch (Exception e) {
+		    System.out.println("Error adding item: " + e.getMessage());
 		}
-	
+	}	
+
 	public void remove(T item) {
 		store.remove(item.getId());
 	}
@@ -44,4 +47,35 @@ public class Inventory <T extends Item>{
 	public List<T> getAll() {
 		return new ArrayList<>(store.values());
 	}
+	
+	public void filterByPrice(double minPrice, double maxPrice) {
+		
+		List<T> storeItems = getAll();
+		
+		for(Item item: storeItems) {
+			
+			if(item.getPrice()>=minPrice && item.getPrice() <= maxPrice) {
+				System.out.println(item.getName());
+			}
+		}
+	}
+	
+	public void filterByAvailability() {
+		List<T> storeItems = getAll();
+		
+		for(Item item: storeItems) {
+			if(item.getQuantity()>0) {
+				System.out.println("Item: " + item.getName() + " Quantity: " + item.getQuantity());
+			}
+		}
+	}
+	
+	public List<T> sortItems(Comparator<T> comparator){
+		
+		List<T> storeItems = getAll();
+		storeItems.sort(comparator);
+		return storeItems;
+	}
+	
+
 }
