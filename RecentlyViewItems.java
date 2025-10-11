@@ -14,7 +14,7 @@ public class RecentlyViewItems {
 	public void addRecentlyViewedItem(Item item) {
 		items.remove(item);
 		items.addFirst(item);
-		if(items.size()>3) {
+		if(items.size()>MAX_SIZE) {
 			items.removeLast();
 		}
 	}
@@ -23,3 +23,4 @@ public class RecentlyViewItems {
 		return  new ArrayList<>(items);
 	}
 }
+
