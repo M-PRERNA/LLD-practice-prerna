@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Voice Diary maskable icon</title>
+  <desc id="desc">A maskable app icon with a centered microphone on a diary page.</desc>
+  <rect width="512" height="512" fill="#825336"/>
+  <circle cx="256" cy="256" r="210" fill="#f6efe6"/>
+  <rect x="146" y="98" width="220" height="316" rx="38" fill="#fffdf8"/>
+  <path d="M188 156h120M188 204h96M188 352h92" fill="none" stroke="#d8ad8f" stroke-width="18" stroke-linecap="round"/>
+  <rect x="211" y="224" width="90" height="114" rx="45" fill="#825336"/>
+  <path d="M188 278c0 41 28 70 68 70s68-29 68-70M256 348v40M222 388h68" fill="none" stroke="#825336" stroke-width="22" stroke-linecap="round"/>
+</svg>

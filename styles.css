@@ -63,6 +63,12 @@ button.primary.recording {
   background: var(--danger);
 }
 
+.install-button {
+  margin-top: 0.6rem;
+  background: var(--accent-dark);
+  color: #fff;
+}
+
 button.ghost {
   background: transparent;
   color: var(--accent-dark);

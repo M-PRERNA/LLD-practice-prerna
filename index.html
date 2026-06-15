@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#825336">
+  <meta name="description" content="A private voice diary that turns spoken thoughts into saved notes.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Voice Diary">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Voice Diary</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/maskable-icon.svg">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,6 +22,7 @@
       <p class="hero-copy">
         Speak your thoughts, turn them into text, and save them as dated diary entries on this device.
       </p>
+      <button id="install-app" type="button" class="install-button" hidden>Install app</button>
     </section>
 
     <section class="card recorder-card" aria-labelledby="recorder-title">

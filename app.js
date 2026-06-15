@@ -17,12 +17,14 @@
     entriesList: document.getElementById("entries-list"),
     emptyState: document.getElementById("empty-state"),
     search: document.getElementById("entry-search"),
-    export: document.getElementById("export-entries")
+    export: document.getElementById("export-entries"),
+    install: document.getElementById("install-app")
   };
 
   let recognition = null;
   let isRecording = false;
   let finalTranscript = "";
+  let deferredInstallPrompt = null;
 
   function loadEntries() {
     try {
@@ -256,6 +258,47 @@
     setSupportMessage("Diary export downloaded as JSON.", false);
   }
 
+  function configureInstallPrompt() {
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      elements.install.hidden = false;
+    });
+
+    window.addEventListener("appinstalled", () => {
+      deferredInstallPrompt = null;
+      elements.install.hidden = true;
+      setSupportMessage("Voice Diary is installed on this device.", false);
+    });
+
+    elements.install.addEventListener("click", async () => {
+      if (!deferredInstallPrompt) {
+        return;
+      }
+
+      deferredInstallPrompt.prompt();
+      const choice = await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      elements.install.hidden = true;
+
+      if (choice.outcome === "accepted") {
+        setSupportMessage("Voice Diary is installing on this device.", false);
+      }
+    });
+  }
+
+  function registerServiceWorker() {
+    if (!("serviceWorker" in navigator)) {
+      return;
+    }
+
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("service-worker.js").catch((error) => {
+        console.warn("Service worker registration failed.", error);
+      });
+    });
+  }
+
   elements.start.addEventListener("click", startListening);
   elements.stop.addEventListener("click", stopListening);
   elements.save.addEventListener("click", saveCurrentEntry);
@@ -263,6 +306,8 @@
   elements.search.addEventListener("input", renderEntries);
   elements.export.addEventListener("click", exportEntries);
 
+  configureInstallPrompt();
+  registerServiceWorker();
   configureSpeechRecognition();
   renderEntries();
 }());

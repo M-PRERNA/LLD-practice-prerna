@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Voice Diary icon</title>
+  <desc id="desc">A warm diary app icon with a microphone and note page.</desc>
+  <defs>
+    <linearGradient id="bg" x1="64" y1="32" x2="448" y2="480" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff4e5"/>
+      <stop offset="1" stop-color="#d8ad8f"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="142" y1="88" x2="370" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fffdf8"/>
+      <stop offset="1" stop-color="#f4dfcd"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect x="130" y="74" width="252" height="364" rx="42" fill="#825336" opacity="0.16"/>
+  <rect x="116" y="64" width="252" height="364" rx="42" fill="url(#paper)" stroke="#825336" stroke-width="16"/>
+  <path d="M176 142h132M176 192h118M176 346h106" fill="none" stroke="#c8a28c" stroke-width="18" stroke-linecap="round"/>
+  <rect x="211" y="214" width="90" height="120" rx="45" fill="#825336"/>
+  <path d="M188 270c0 41 28 70 68 70s68-29 68-70M256 340v42M222 382h68" fill="none" stroke="#825336" stroke-width="22" stroke-linecap="round"/>
+</svg>

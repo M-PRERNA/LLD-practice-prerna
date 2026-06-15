@@ -1,0 +1,41 @@
+{
+  "name": "Voice Diary",
+  "short_name": "Voice Diary",
+  "description": "Capture spoken thoughts and save them as private diary entries on your device.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6efe6",
+  "theme_color": "#825336",
+  "orientation": "portrait",
+  "categories": ["productivity", "lifestyle"],
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/maskable-icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "New diary entry",
+      "short_name": "New entry",
+      "description": "Open Voice Diary and capture a new thought.",
+      "url": "./",
+      "icons": [
+        {
+          "src": "icons/icon.svg",
+          "sizes": "192x192",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ]
+}
