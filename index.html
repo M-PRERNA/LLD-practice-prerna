@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Diary</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero" aria-labelledby="app-title">
+      <p class="eyebrow">Private voice notes</p>
+      <h1 id="app-title">Voice Diary</h1>
+      <p class="hero-copy">
+        Speak your thoughts, turn them into text, and save them as dated diary entries on this device.
+      </p>
+    </section>
+
+    <section class="card recorder-card" aria-labelledby="recorder-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Capture</p>
+          <h2 id="recorder-title">Today's thought</h2>
+        </div>
+        <span id="status-pill" class="status-pill" aria-live="polite">Ready</span>
+      </div>
+
+      <div class="field-grid">
+        <label for="entry-title">Title</label>
+        <input id="entry-title" type="text" placeholder="A short title for this memory">
+
+        <label for="entry-text">Diary text</label>
+        <textarea id="entry-text" rows="9" placeholder="Press Start listening and speak, or type here as a fallback."></textarea>
+      </div>
+
+      <div class="live-panel" aria-live="polite">
+        <p class="live-label">Live transcript</p>
+        <p id="live-transcript" class="live-transcript">Your spoken words will appear here while recording.</p>
+      </div>
+
+      <div class="actions">
+        <button id="start-listening" type="button" class="primary">Start listening</button>
+        <button id="stop-listening" type="button" disabled>Stop</button>
+        <button id="save-entry" type="button">Save entry</button>
+        <button id="clear-draft" type="button" class="ghost">Clear draft</button>
+      </div>
+
+      <p id="support-message" class="support-message"></p>
+    </section>
+
+    <section class="card entries-card" aria-labelledby="entries-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Archive</p>
+          <h2 id="entries-title">Saved entries</h2>
+        </div>
+        <button id="export-entries" type="button" class="ghost">Export JSON</button>
+      </div>
+
+      <label class="search-label" for="entry-search">Search diary</label>
+      <input id="entry-search" type="search" placeholder="Search by title, text, or date">
+
+      <div id="empty-state" class="empty-state">
+        No diary entries yet. Capture your first thought above.
+      </div>
+      <ol id="entries-list" class="entries-list"></ol>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
