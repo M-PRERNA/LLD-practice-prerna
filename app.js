@@ -18,7 +18,8 @@
     emptyState: document.getElementById("empty-state"),
     search: document.getElementById("entry-search"),
     export: document.getElementById("export-entries"),
-    install: document.getElementById("install-app")
+    install: document.getElementById("install-app"),
+    pwaStatus: document.getElementById("pwa-status")
   };
 
   let recognition = null;
@@ -289,12 +290,16 @@
 
   function registerServiceWorker() {
     if (!("serviceWorker" in navigator)) {
+      elements.pwaStatus.textContent = "This browser does not support offline app caching.";
       return;
     }
 
     window.addEventListener("load", () => {
-      navigator.serviceWorker.register("service-worker.js").catch((error) => {
+      navigator.serviceWorker.register("service-worker.js").then(() => navigator.serviceWorker.ready).then(() => {
+        elements.pwaStatus.textContent = "Offline mode is ready after this first visit.";
+      }).catch((error) => {
         console.warn("Service worker registration failed.", error);
+        elements.pwaStatus.textContent = "Offline mode could not be started in this browser.";
       });
     });
   }
