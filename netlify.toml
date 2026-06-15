@@ -1,0 +1,23 @@
+[build]
+  command = "rm -rf dist && mkdir -p dist/icons && cp index.html app.js styles.css manifest.webmanifest service-worker.js dist/ && cp icons/*.svg dist/icons/"
+  publish = "dist"
+
+[[headers]]
+  for = "/service-worker.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/icons/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

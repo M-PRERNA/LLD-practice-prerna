@@ -19,6 +19,16 @@ Voice Diary is a Progressive Web App (PWA). After opening it in a supported mobi
 
 The app shell is cached for offline use after the first visit. Speech transcription still needs browser speech recognition support, and some browsers may require a network connection for transcription.
 
+## Deploy to Netlify
+
+The repository includes `netlify.toml`, which builds the static PWA into `dist` and publishes that folder.
+
+```sh
+npx netlify-cli@latest deploy --prod --build
+```
+
+Set `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` first, or run `npx netlify-cli@latest login` and link a site before deploying.
+
 ## Notes
 
 - Microphone transcription depends on the browser's Speech Recognition implementation.
